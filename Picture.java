@@ -1,8 +1,103 @@
-<NotepadPlus>
-    <Session activeView="0">
-        <mainView activeIndex="0">
-            <File firstVisibleLine="76" xOffset="0" scrollWidth="608" startPos="2826" endPos="2826" selMode="0" lang="Java" encoding="-1" filename="C:\Users\G00045325\Desktop\Project1-house\Picture.java" backupFilePath="C:\Users\G00045325\AppData\Roaming\Notepad++\backup\Picture.java@2015-09-21_184153" originalFileLastModifTimestamp="1442875254" />
-        </mainView>
-        <subView activeIndex="0" />
-    </Session>
-</NotepadPlus>
+/**
+ * This class represents a simple picture. You can draw the picture using
+ * the draw method. But wait, there's more: being an electronic picture, it
+ * can be changed. You can set it to black-and-white display and back to
+ * colors (only after it's been drawn, of course).
+ *
+ * This class was written as an early example for teaching Java with BlueJ.
+ * 
+ * @author  Michael Kšlling and David J. Barnes
+ * @version 2011.07.31
+ */
+public class Picture
+{
+    private Square wall;
+    private Square window;
+    private Triangle roof;
+    private Circle sun;
+    private Square ground;
+    private Person harry;
+
+    /**
+     * Constructor for objects of class Picture
+     */
+    public Picture()
+    {
+        // nothing to do... instance variables are automatically set to null
+    }
+
+    /**
+     * Draw this picture.
+     */
+    public void draw()
+    {
+        harry = new Person();
+        harry.makeVisible();
+        
+        
+        wall = new Square();
+        wall.moveHorizontal(-140);
+        wall.moveVertical(20);
+        wall.changeSize(120);
+        wall.makeVisible();
+        
+        ground = new Square();
+        ground.moveHorizontal (-300);
+        ground.moveVertical (110);
+        ground.changeSize(600);
+        ground.makeVisible();
+        ground.changeColor ("green");
+        
+        window = new Square();
+        window.changeColor("white");
+        window.moveHorizontal(-120);
+        window.moveVertical(40);
+        window.changeSize(40);
+        window.makeVisible();
+
+        roof = new Triangle();  
+        roof.changeSize(60, 180);
+        roof.moveHorizontal(20);
+        roof.moveVertical(-60);
+        roof.makeVisible();
+
+        sun = new Circle();
+        sun.changeColor("green");
+        sun.moveHorizontal(100);
+        sun.moveVertical(-40);
+        sun.changeSize(80);
+        sun.makeVisible();
+    }
+
+    /**
+     * Change this picture to black/white display
+     */
+    public void setBlackAndWhite()
+    {
+        if (wall != null)   // only if it's painted already...
+        {
+            wall.changeColor("black");
+            window.changeColor("white");
+            roof.changeColor("black");
+            sun.changeColor("black");
+            ground.changeColor("white");
+            harry.changeColor("white");
+        }
+    }
+
+    /**
+     * Change this picture to use color display
+     */
+    public void setColor()
+    {
+        if (wall != null)   // only if it's painted already...
+        {
+            wall.changeColor("red");
+            window.changeColor("black");
+            roof.changeColor("green");
+            sun.changeColor("yellow");
+            ground.changeColor("green");
+            harry.changeColor("black");
+        }
+    }
+}
